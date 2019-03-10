@@ -1,0 +1,5 @@
+Apologizes, I must have missed the original email.
+
+It is at the discretion of the project team whether to include SQA testing within the effort. If you  or the team feels no testing is needed, we will acknowledge receipt of the decision.
+
+Since regulation is effective Jan 1, 2019, assuming this going to EBS 12.1.1, we are part of the 

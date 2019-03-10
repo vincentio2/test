@@ -1,0 +1,78 @@
+select ts.name,t.name, tsf.hierarchical_path, ri.description, ri.status
+
+from test as t
+inner join test_instance as ti on ti.test_id = t.id
+inner join test_set as ts on ts.id = ti.cycle_id
+inner join test_set_folder as tsf on tsf.id = ts.parent_id
+inner join run  as r on r.test_id = t.id
+inner join run_iteration as ri on ri.parent_id = r.id
+
+
+folder path 02 functional (manual) =  AAAAACAAAAACAACAABAAB
+
+root/2018-19/Project Insight - EBS Upgrade 12.2.6/SQA  = AAAAACAAAAAC
+
+root/2018-19/Project Insight - EBS Upgrade 12.2.6/SQA/ Pre-INT1 - CD1.1/Manual Testing = AAAAACAAAAACAACAAB
+
+
+root/2018-19/Project Insight - EBS Upgrade 12.2.6/SQA/ Pre-INT1 - CD1.1/Manual Testing/02 Functional Testing/PTP - Procure to Pay = AAAAACAAAAACAACAABAABAAA
+
+"	"	"	"				"			"		"          / PTM - Plan to Make = AAAAACAAAAACAACAABAABAAB
+
+"	"	"	"				"			"		"         / OTC - Order to Cash = AAAAACAAAAACAACAABAABAAC
+
+"	"	"	"				"			"		"         / RTR - Record to Report = AAAAACAAAAACAACAABAABAAD
+
+"	"	"	"				"			"		"         / OPC - Oracle Project Costing = AAAAACAAAAACAACAABAABAAE
+
+
+
+automation
+		
+02 Functional   AAAAACAAAAACAACAAAAAE
+02 Functional 	AAAAACAAAAACAABAAAAAC
+02 Functional Tesing 
+
+
+
+--- for automated
+Select ts.name As "test set",
+  t.name As "Test Name",
+  tsf.hierarchical_path,
+  ri.description,
+  ri.status
+From test As t
+  Inner Join test_instance As ti On ti.test_id = t.id
+  Inner Join test_set As ts On ts.id = ti.cycle_id
+  Inner Join test_set_folder As tsf On tsf.id = ts.parent_id
+  Inner Join run As r On r.test_id = t.id
+  Inner Join run_iteration As ri On ri.parent_id = r.id
+Where tsf.hierarchical_path Like 'AAAAACAAAAAC%'
+
+
+---- for manual
+Select ts.name As "test set",
+  t.name As "Test Name",
+  tsf.hierarchical_path,
+  r.status
+From test As t
+  Inner Join test_instance As ti On ti.test_id = t.id
+  Inner Join test_set As ts On ts.id = ti.cycle_id
+  Inner Join test_set_folder As tsf On tsf.id = ts.parent_id
+  Inner Join run As r On r.test_id = t.id
+Where tsf.hierarchical_path Like 'AAAAACAAAAACAAB%'
+
+
+
+
+--
+
+Automated Wicers in the lab for SQA C1
+
+Select VH_TSFH.Parent,
+  VH_TSFH.name,
+  VH_TSFH.hierarchical_path
+From VH_TSFH
+Where VH_TSFH.name Like '%[0-9]' 
+And (VH_TSFH.hierarchical_path Like 'AAAAACAAAAACAACAAAAAE%' or VH_TSFH.hierarchical_path Like 'AAAAACAAAAACAABAAAAAC%'   
+or VH_TSFH.hierarchical_path Like 'AAAAACAAAAACAAAAAAAAA%')
