@@ -1,3 +1,5 @@
+
+// Note 2: edit via Github
 select ts.name,t.name, tsf.hierarchical_path, ri.description, ri.status
 
 from test as t
